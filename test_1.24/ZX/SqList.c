@@ -1,0 +1,98 @@
+#define _CRT_SECURE_NO_WARNINGS 
+
+#include "test.h"
+
+//Ë³Ðò±í³õÊ¼»¯
+void SLInis(SL* pc)
+{
+	pc->arr = (SL*)calloc(MAX,sizeof(SLDataType));
+	pc->count = 0;
+	pc->capacity = MAX;
+}
+
+//Ë³Ðò±íÏú»Ù
+void SLDestory(SL* pc)
+{
+	assert(pc);
+	if (pc->arr)
+	{
+		free(pc->arr);
+	}
+	pc->arr = NULL;
+	pc->count = pc->capacity = 0;
+}
+
+//Ë³Ðò±íÀ©ÈÝ£¨ÉêÇë¿Õ¼ä£©
+void SLAdd(SL* pc)
+{
+	assert(pc);
+	if (pc->count == pc->capacity)
+	{
+		int newCapacity = pc->capacity * 2;
+		SLDataType* str = (SLDataType*)realloc(pc->arr, sizeof(SLDataType) * newCapacity);
+		if (str != NULL)
+		{
+			pc->arr = str;
+			pc->capacity = newCapacity;
+			printf("À©ÈÝ³É¹¦\n");
+			str = NULL;
+		}
+		else
+		{
+			perror("SLAdd");
+			exit(-1);
+		}
+	}
+}
+
+//Î²²å
+void SLPushBack(SL* pc, SLDataType x)
+{
+	assert(pc);
+	SLAdd(pc);
+	pc->arr[pc->count++] = x;
+}
+
+//Í·²å
+void SLPushFirst(SL* pc, SLDataType x)
+{
+	assert(pc);
+	SLAdd(pc);
+	int i = 0;
+	for (i = pc->count - 1; i >= 0; i--)
+	{
+		pc->arr[i + 1] = pc->arr[i];
+	}
+	pc->arr[0] = x;
+	pc->count++;
+}
+
+//Ë³Ðò±íµÄ´òÓ¡
+void SLPrint(SL c)
+{
+	int i = 0;
+	for (i = 0; i < c.count; i++)
+	{
+		printf("%d ", c.arr[i]);
+	}
+	printf("\n");
+}
+
+//Î²É¾
+void SLPopBack(SL* pc)
+{
+	assert(pc);
+	pc->count--;
+}
+
+//Í·É¾
+void SLPopFirst(SL* pc)
+{
+	assert(pc);
+	int i = 0;
+	for (i = 0; i < pc->count - 1; i++)
+	{
+		pc->arr[i] = pc->arr[i + 1];
+	}
+	pc->count--;
+}
