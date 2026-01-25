@@ -1,0 +1,5 @@
+﻿  contact.c
+F:\Code\2025\Tong Xun Lu\通讯录\通讯录\contact.c(241,27): warning C4133: “函数”: 从“PeoInfor *”到“const char *”的类型不兼容
+F:\Code\2025\Tong Xun Lu\通讯录\通讯录\contact.c(241,42): warning C4133: “函数”: 从“PeoInfor *”到“const char *”的类型不兼容
+F:\Code\2025\Tong Xun Lu\通讯录\通讯录\contact.c(264,33): warning C4028: 形参 1 与声明不一致
+  通讯录.vcxproj -> F:\Code\2025\Tong Xun Lu\通讯录\x64\Debug\通讯录.exe
